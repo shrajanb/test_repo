@@ -1,0 +1,39 @@
+### JobMaster API Tests
+
+# Check if the API is running
+GET http://localhost:5276/api/jobs/status
+
+###
+
+# Manually trigger GitHub sync job
+POST http://localhost:5276/api/jobs/github/sync
+
+###
+
+# Schedule GitHub sync job (it's already scheduled on startup)
+POST http://localhost:5276/api/jobs/github/schedule
+
+###
+
+# Unschedule GitHub sync job
+DELETE http://localhost:5276/api/jobs/github/unschedule
+
+###
+
+# Manually trigger Jira sync job
+POST http://localhost:5276/api/jobs/jira/sync
+
+###
+
+# Schedule Jira sync job (it's already scheduled on startup)
+POST http://localhost:5276/api/jobs/jira/schedule
+
+###
+
+# Unschedule Jira sync job
+DELETE http://localhost:5276/api/jobs/jira/unschedule
+
+###
+
+# Access Hangfire Dashboard
+# Visit in browser: http://localhost:5276/hangfire

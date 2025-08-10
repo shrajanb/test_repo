@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "dotnet build",
+      "group": "build",
+      "problemMatcher": ["$msCompile"]
+    },
+    {
+      "label": "run",
+      "type": "shell",
+      "command": "dotnet run",
+      "group": "test",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "create-migration",
+      "type": "shell",
+      "command": "export PATH=\"$PATH:/Users/rajan/.dotnet/tools\" && dotnet ef migrations add ${input:migrationName}",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "update-database",
+      "type": "shell",
+      "command": "export PATH=\"$PATH:/Users/rajan/.dotnet/tools\" && dotnet ef database update",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "sync-github-job",
+      "type": "shell",
+      "command": "curl -X POST http://localhost:5275/api/jobs/github/sync",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "migrationName",
+      "type": "promptString",
+      "description": "Name for the migration"
+    }
+  ]
+}
